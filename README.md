@@ -97,9 +97,10 @@ Consider using a production WSGI server like Gunicorn or uWSGI instead of the Fl
 ### Built With
 
 - **Backend**: Flask (Python web framework)
-- **Frontend**: Vanilla JavaScript, HTML5, CSS3
-- **Design**: Modern gradient UI with smooth animations
-- **Fonts**: Inter (Google Fonts)
+- **Frontend**: Modern UI Framework (Vanilla JavaScript, HTML5, CSS3)
+- **Design**: Glassmorphism, gradient effects, and smooth animations
+- **Architecture**: Component-based CSS with utility patterns (inspired by modern frameworks)
+- **No External Dependencies**: Self-contained design system with no CDN requirements
 
 ### Project Structure
 
