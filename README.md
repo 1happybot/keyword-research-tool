@@ -48,12 +48,25 @@ A powerful, user-friendly web application designed to help Etsy sellers optimize
 
 4. **Run the application**
    ```bash
+   # For production (recommended)
    python app.py
+   
+   # For development with debug mode
+   FLASK_DEBUG=true python app.py
    ```
 
 5. **Open your browser**
    
    Navigate to `http://localhost:5000` to start using the tool!
+
+### Production Deployment
+
+For production deployment, always ensure debug mode is disabled. The application uses environment variables to control debug mode:
+
+- **Development**: Set `FLASK_DEBUG=true` to enable debug mode
+- **Production**: Do not set the variable or set `FLASK_DEBUG=false`
+
+Consider using a production WSGI server like Gunicorn or uWSGI instead of the Flask development server.
 
 ## 📖 How to Use
 
