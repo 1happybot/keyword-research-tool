@@ -17,6 +17,8 @@ A powerful, user-friendly web application designed to help Etsy sellers optimize
 
 ## 🚀 Quick Start
 
+> 💡 **New to the project?** Check out [QUICKSTART.md](QUICKSTART.md) for a super-fast setup guide!
+
 ### Prerequisites
 
 - Python 3.7 or higher
