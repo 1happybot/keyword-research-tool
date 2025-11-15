@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etsy Keyword Research Tool - Find Winning Keywords</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h1>Etsy Keyword Research Tool</h1>
+            </div>
+            <p class="subtitle">Discover high-performing keywords to boost your Etsy shop's visibility and sales</p>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input type="text" id="keywordInput" placeholder="Enter your keyword (e.g., handmade jewelry)" autocomplete="off">
+                    <button id="analyzeBtn" class="btn-primary">
+                        <span class="btn-text">Analyze</span>
+                        <span class="btn-loader"></span>
+                    </button>
+                </div>
+                <div class="quick-examples">
+                    <span class="example-label">Try:</span>
+                    <button class="example-btn" data-keyword="handmade jewelry">handmade jewelry</button>
+                    <button class="example-btn" data-keyword="personalized gift">personalized gift</button>
+                    <button class="example-btn" data-keyword="wedding decor">wedding decor</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="resultsSection" class="results-section hidden">
+            <div class="results-header">
+                <h2 id="analyzedKeyword" class="analyzed-keyword"></h2>
+            </div>
+
+            <!-- Metrics Grid -->
+            <div class="metrics-grid">
+                <div class="metric-card search-volume-card">
+                    <div class="metric-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 8V16M12 11V16M8 14V16M6 20H18C19.1046 20 20 19.1046 20 18V6C20 4.89543 19.1046 4 18 4H6C4.89543 4 4 4.89543 4 6V18C4 19.1046 4.89543 20 6 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="metric-content">
+                        <h3 class="metric-label">Search Volume</h3>
+                        <div class="metric-value" id="searchVolume">-</div>
+                        <p class="metric-description">Estimated monthly searches</p>
+                    </div>
+                </div>
+
+                <div class="metric-card difficulty-card">
+                    <div class="metric-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 10V3L4 14H11L11 21L20 10L13 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="metric-content">
+                        <h3 class="metric-label">Ranking Difficulty</h3>
+                        <div class="difficulty-wrapper">
+                            <div class="metric-value" id="difficulty">-</div>
+                            <div class="difficulty-bar">
+                                <div class="difficulty-fill" id="difficultyFill"></div>
+                            </div>
+                            <div class="difficulty-label" id="difficultyLabel">-</div>
+                        </div>
+                        <p class="metric-description">Competition level</p>
+                    </div>
+                </div>
+
+                <div class="metric-card earnings-card">
+                    <div class="metric-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2V22M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="metric-content">
+                        <h3 class="metric-label">Estimated Earnings</h3>
+                        <div class="metric-value earnings-value" id="earnings">-</div>
+                        <p class="metric-description">Potential monthly revenue</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Keywords Section -->
+            <div class="related-keywords-section">
+                <h3 class="section-title">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H15M9 5C9 6.10457 9.89543 7 11 7H13C14.1046 7 15 6.10457 15 5M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5M12 12H15M12 16H15M9 12H9.01M9 16H9.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Related Keywords
+                </h3>
+                <div id="relatedKeywords" class="keywords-list"></div>
+            </div>
+        </section>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message hidden">
+            <svg class="error-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span id="errorText"></span>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Built for Etsy sellers to optimize their product listings and increase visibility</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
