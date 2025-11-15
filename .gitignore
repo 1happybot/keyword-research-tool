@@ -44,3 +44,10 @@ instance/
 # Environment variables
 .env
 .env.local
+
+# Backup files
+*-old.*
+*-original.*
+*-tailwind.*
+*-modern.*
+vendor/
