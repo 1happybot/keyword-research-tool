@@ -238,11 +238,13 @@ function hideResults() {
 // ===== Input Enhancement =====
 // Add input validation and character count if needed
 keywordInput.addEventListener('input', (e) => {
-    // Remove any leading/trailing whitespace as user types
-    if (e.target.value !== e.target.value.trim()) {
+    // Remove only leading whitespace as user types (allow spaces in the middle)
+    const trimmedStart = e.target.value.replace(/^\s+/, '');
+    if (e.target.value !== trimmedStart) {
+        const removedChars = e.target.value.length - trimmedStart.length;
         const cursorPosition = e.target.selectionStart;
-        e.target.value = e.target.value.trim();
-        e.target.setSelectionRange(cursorPosition, cursorPosition);
+        e.target.value = trimmedStart;
+        e.target.setSelectionRange(cursorPosition - removedChars, cursorPosition - removedChars);
     }
 });
 
